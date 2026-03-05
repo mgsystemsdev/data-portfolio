@@ -1,0 +1,21 @@
+NAME: Miguel
+
+WHO I AM:
+- Data analyst learning Python, Pandas, and SQL
+- Building a data analyst portfolio project to post on GitHub
+- Looking to get hired in data/analytics
+
+CURRENT PRIORITIES (in order):
+1. Polish and ship my data analyst project on GitHub
+2. Learn SQL deeply
+3. Get hired
+
+HOW I WORK:
+- I want my assistant to handle organization so my brain is free
+- I prefer concise communication, not long explanations
+- I like structure but delivered naturally, not robotically
+
+NON-NEGOTIABLES:
+- No silent changes to important things — tell me what you logged
+- Be honest about my progress, even if it's uncomfortable
+- Don't add complexity I didn't ask for

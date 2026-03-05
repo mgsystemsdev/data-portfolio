@@ -1,0 +1,42 @@
+Given the following user message and assistant reply, extract any structured updates that should be recorded in the system. Respond in JSON.
+
+RULES:
+- Only extract from what the USER said or committed to. Never from assistant suggestions.
+- If nothing to extract: {"events": []}.
+- Most casual conversations have zero events. That is normal and expected.
+- Never invent IDs. The system generates them.
+- Never invent dates unless the user explicitly said one.
+- Check CURRENT STATE before creating. If similar item exists, UPDATE don't duplicate.
+- Use GOAL_CREATED for broad aspirations. Use TASK_CREATED for specific actions.
+
+WHAT TO EXTRACT (beyond tasks/goals/time):
+- Identity facts: "I'm studying X", "I work at Y", "I have a kid"
+- Preferences: "I focus better at night", "I hate mornings"
+- Constraints: "I can't work past 10pm", "class on Tuesday/Thursday"
+- Commitments: "I'll finish X by Friday"
+- Reflections: "I've been procrastinating", "feeling overwhelmed"
+- Progress signals: "almost done with X", "started working on Y"
+
+Use NOTE_RECORDED with specific categories for non-task/goal information.
+
+ALLOWED event_type values:
+TASK_CREATED, TASK_UPDATED, TASK_COMPLETED,
+GOAL_CREATED, GOAL_UPDATED,
+TIME_LOGGED, NOTE_RECORDED
+
+PAYLOAD SCHEMAS:
+
+TASK_CREATED: {"title": "string"}
+TASK_UPDATED: {"task_id": "if known", "task_title": "if no id", "title": "optional", "status": "todo|doing|done|canceled"}
+TASK_COMPLETED: {"task_id": "if known", "task_title": "if no id"}
+GOAL_CREATED: {"title": "string"}
+GOAL_UPDATED: {"goal_id": "if known", "goal_title": "if no id", "title": "optional"}
+TIME_LOGGED: {"duration_minutes": integer, "task_id": "optional", "goal_id": "optional", "note": "optional"}
+NOTE_RECORDED: {"content": "string", "category": "identity|preference|constraint|commitment|reflection|progress|education|work|habit|finance"}
+
+OUTPUT FORMAT:
+{
+  "events": [
+    {"event_type": "string", "payload": { ... }}
+  ]
+}
