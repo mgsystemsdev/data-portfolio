@@ -40,6 +40,10 @@ page_ai_assistant = st.Page("pages/6_Personal_Task_Goal_Assistant.py", title="Pe
 page_ai_teacher = st.Page("pages/7_Data_Analytics_Apprenticeship.py", title="Data Analytics Apprenticeship")
 page_ai_pract = st.Page("pages/8_Concept_Practice_Engine.py", title="Concept Practice Engine")
 page_ai_metacode = st.Page("pages/9_Code_Analytics_Apprenticeship.py", title="Code & Analytics Apprenticeship")
+page_pdos = st.Page(
+    "pages/10_PDOS_Orchestration_System.py",
+    title="PDOS — AI Orchestration",
+)
 
 
 def home():
@@ -69,6 +73,13 @@ def home():
         st.markdown("**Analytics Playground**")
         st.caption("SQL, pandas, and Streamlit lab: create tables, insert data, run queries. Same foundations behind the turnover case study.")
         st.page_link(page_playground, label="Open project", icon="🔬", use_container_width=True)
+
+    st.divider()
+    st.subheader("AI systems & orchestration")
+    st.caption(
+        "Local-first control plane: structured tasks, multi-tool routing, validation, and traceability—not just dashboards."
+    )
+    st.page_link(page_pdos, label="Open PDOS (Personal Developer OS)", icon="🧠", use_container_width=True)
 
     st.divider()
     st.subheader("AI-Powered Applications")
@@ -104,6 +115,7 @@ home_page = st.Page(home, title="Home", default=True)
 pg = st.navigation({
     "": [home_page, about],
     "Analytics & Data Engineering": [page_turnover, page_playground],
+    "AI systems & orchestration": [page_pdos],
     "AI-Powered Applications": [
         page_ai_assistant,
         page_ai_teacher,
